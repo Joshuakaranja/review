@@ -208,35 +208,98 @@
 
 // Extract the first two techs of the second project into variables mainTech1 and mainTech2
 
-const apiResponse = {
-  status: "success",
-  data: {
-    user: {
-      id: 102,
-      username: "coder123",
-      profile: {
-        fullName: "Jane Doe",
-        contacts: {
-          email: "jane@example.com",
-          phone: "+254700000000"
-        }
-      }
-    },
-    projects: [
-      { id: 1, title: "Portfolio Website", tech: ["HTML", "CSS", "JS"] },
-      { id: 2, title: "E-Commerce App", tech: ["React", "Node", "MongoDB"] }
-    ]
-  }
-};
-const { status , data :{ user :{id , username, profile :{ fullName, contacts :{ email , phone}}} , projects :[{ id : projectId1, title : projectTitle1 , tech : [ mainTech1, mainTech2 , mainTech3]},{ id : projectId2, title : projectTitle2 , tech : [ secondTech1, secondTech2 , secondTech3]}]}} = apiResponse;
-console.log(status);
-console.log(username);
-console.log(fullName);
-console.log(email);
-console.log(projectTitle1);
-console.log(mainTech1);
-console.log(mainTech2);
-console.log(secondTech1);
-console.log(secondTech2);
+// const apiResponse = {
+//   status: "success",
+//   data: {
+//     user: {
+//       id: 102,
+//       username: "coder123",
+//       profile: {
+//         fullName: "Jane Doe",
+//         contacts: {
+//           email: "jane@example.com",
+//           phone: "+254700000000"
+//         }
+//       }
+//     },
+//     projects: [
+//       { id: 1, title: "Portfolio Website", tech: ["HTML", "CSS", "JS"] },
+//       { id: 2, title: "E-Commerce App", tech: ["React", "Node", "MongoDB"] }
+//     ]
+//   }
+// };
+// const { status , data :{ user :{id , username, profile :{ fullName, contacts :{ email , phone}}} , projects :[{ id : projectId1, title : projectTitle1 , tech : [ mainTech1, mainTech2 , mainTech3]},{ id : projectId2, title : projectTitle2 , tech : [ secondTech1, secondTech2 , secondTech3]}]}} = apiResponse;
+// console.log(status);
+// console.log(username);
+// console.log(fullName);
+// console.log(email);
+// console.log(projectTitle1);
+// console.log(mainTech1);
+// console.log(mainTech2);
+// console.log(secondTech1);
+// console.log(secondTech2);
 
-// expected output
+// // expected output
+
+// DOM in javascript
+
+// Select the <h1> and change its text to:
+// "DOM is powerful!"
+
+// Add an event listener on the Change Title Color button to change the <h1> color to blue when clicked.
+
+// Add an event listener on the Add List Item button to create a new <li> with text "New Item" and append it to the list.
+
+// const header = document.getElementById("title");
+// header.textContent = "DOM is powerful!";
+
+// const change = document.getElementById("changeColor");
+// change.addEventListener("click", () => {
+//     header.style.color = "blue";
+// });
+
+// const addItemButton = document.getElementById("addItem");
+// const list = document.getElementById("list");
+
+// addItemButton.addEventListener("click", () => {
+//     const newItem = document.createElement("li");
+//     newItem.textContent = "New Item";
+//     list.appendChild(newItem);
+// });
+
+// Grab elements (taskInput, addTask, taskList).
+
+// When clicking Add Task:
+
+// Create a new <li> element.
+
+// Set its text to whatever is inside the input.
+
+// Append it to the taskList.
+
+// Add a click event to toggle "done" (use style.textDecoration = "line-through").
+
+// Add a Delete button inside each <li> to remove the task.
+
+const taskInput = document.getElementById("taskInput");
+const addTask = document.getElementById("addTask");
+const taskList = document.getElementById("taskList");
+
+addTask.addEventListener("click", () => {
+    const newTask = document.createElement("li");
+    newTask.textContent = taskInput.value;
+    taskList.appendChild(newTask);
+    taskInput.value = "";
+
+    newTask.addEventListener("click", () => {
+        newTask.style.textDecoration = newTask.style.textDecoration === "line-through" ? "none" : "line-through";
+    });
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    newTask.appendChild(deleteButton);
+
+    deleteButton.addEventListener("click", () => {
+        taskList.removeChild(newTask);
+    });
+});
